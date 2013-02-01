@@ -3,7 +3,8 @@
   "name": "FoodyClient",
   "version": "0.0.1",
   "dependencies": {
-    "grunt-ember-templates": "~0.3.1"
+    "grunt-ember-templates": "~0.3.1",
+    "grunt-jade": "git://github.com/thedjpetersen/grunt-jade.git"
   },
   "devDependencies": {}
 }

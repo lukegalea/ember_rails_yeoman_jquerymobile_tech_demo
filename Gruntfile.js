@@ -2,6 +2,7 @@ module.exports = function( grunt ) {
   'use strict';
 
   grunt.loadNpmTasks('grunt-ember-templates');
+  grunt.loadNpmTasks('grunt-jade');
 
   //
   // Grunt configuration:
@@ -30,16 +31,34 @@ module.exports = function( grunt ) {
       }
     },
 
+    // compile .jade files using jade
+    jade: {
+      html: {
+        src: ['app/scripts/templates/**/*.jade', 'app/templates/**/!_*.jade'],
+        dest: 'tmp/renderedJade',
+        options: {
+          client: false,
+          basePath: 'app/scripts/templates',
+          pretty: true
+        }
+      }
+    },
+
     // Ember templates
     ember_templates: {
       compile: {
         options: {
           templateName: function(sourceFile) {
-            return sourceFile.replace(/app\/scripts\/templates\//, '');
+            var name = sourceFile.replace(/(app\/scripts\/templates\/)|tmp\/renderedJade\//, '');
+            name = name.replace(/\.html$/, '');
+            return name;
           }
         },
         files: {
-          'app/scripts/templates.js': 'app/scripts/templates/**/*.handlebars'
+          'app/scripts/templates.js': [
+            'app/scripts/templates/**/*.handlebars',
+            'tmp/renderedJade/**/*.handlebars.html'
+          ]
         }
       }
     },
@@ -80,18 +99,23 @@ module.exports = function( grunt ) {
         ],
         tasks: 'compass reload'
       },
+      jade: {
+        files: [
+          'app/scripts/templates/**/*.jade'          
+        ],
+        tasks: 'jade ember_templates reload'
+      },
       reload: {
         files: [
           'app/*.html',
           'app/styles/**/*.css',
           'app/scripts/**/*.js',
-          'app/images/**/*',
-          'app/scripts/handlebars/**/*.js'
+          'app/images/**/*'
         ],
         tasks: 'reload'
       },
       ember_templates: {
-        files: 'app/scripts/**/*.handlebars',
+        files: ['app/scripts/**/*.handlebars', 'tmp/renderedJade/**/*.handlebars.html'],
         tasks: 'ember_templates reload'
       }
     },
