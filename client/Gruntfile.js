@@ -39,7 +39,7 @@ module.exports = function( grunt ) {
         options: {
           client: false,
           basePath: 'app/scripts/templates',
-          pretty: true
+          pretty: false
         }
       }
     },
