@@ -103,7 +103,7 @@ module.exports = function( grunt ) {
         files: [
           'app/scripts/templates/**/*.jade'          
         ],
-        tasks: 'jade ember_templates reload'
+        tasks: 'jade ember_templates'
       },
       reload: {
         files: [
