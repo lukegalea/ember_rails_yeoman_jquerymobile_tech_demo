@@ -1,4 +1,4 @@
-Client.ApplicationController = Ember.ObjectController.extend({
-  // Implement your controller here.
-});
+// Client.ApplicationController = Ember.ObjectController.extend({
+//   // Implement your controller here.
+// });
 

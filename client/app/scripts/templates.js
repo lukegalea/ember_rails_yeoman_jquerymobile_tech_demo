@@ -10,3 +10,11 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   data.buffer.push(escapeExpression(stack1) + "</div><footer>&copy;2013 Luke Galea <luke<AT>ideaforge.org></footer>");
   return buffer;
 });
+
+Ember.TEMPLATES["index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+helpers = helpers || Ember.Handlebars.helpers; data = data || {};
+  
+
+
+  data.buffer.push("<p> \nThis is the index</p>");
+});
