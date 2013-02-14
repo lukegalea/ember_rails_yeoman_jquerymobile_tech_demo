@@ -34,7 +34,7 @@ module.exports = function( grunt ) {
     // compile .jade files using jade
     jade: {
       html: {
-        src: ['app/scripts/templates/**/*.jade', 'app/templates/**/!_*.jade'],
+        src: ['app/scripts/templates/**/*.jade', 'app/scripts/templates/**/!_*.jade'],
         dest: 'tmp/renderedJade',
         options: {
           client: false,
